@@ -68,3 +68,5 @@ if run_example:
 
     trainer.train()
     trainer.save_model(save_dir)
+
+print('done!')
