@@ -1,7 +1,6 @@
 # # Training a BPE tokenizer from scratch
 
 from pathlib import Path
-import os
 from tokenizers import Tokenizer, pre_tokenizers, models, trainers, decoders
 from tokenizers.processors import TemplateProcessing
 from tokenizers.normalizers import Lowercase
