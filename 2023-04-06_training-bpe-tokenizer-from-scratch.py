@@ -59,6 +59,7 @@ loaded_tokenizer = Tokenizer.from_file(str(DST_PATH.joinpath("bpe_tokenizer.json
 
 # Test the tokenizer
 text = "The cat is on the table."
+text = text.lower()
 encoded = loaded_tokenizer.encode(text)
 print(encoded.tokens)
 print(encoded.ids)
