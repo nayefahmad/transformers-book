@@ -38,4 +38,4 @@ with torch.no_grad():
     last_hidden_state = model(**model_inputs).last_hidden_state
     cls_token_embeddings = last_hidden_state[:, 0, :].numpy()
 
-cls_token_embeddings.shape
+assert cls_token_embeddings.shape == (3, 768)
