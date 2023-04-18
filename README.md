@@ -1,6 +1,6 @@
 # Transformers Playground
 
-This repo is for exploring `transformers` models, largely based on the book by Lewis Tunstall et al. 
+This repo is for exploring `transformers` models, largely based on the [book by Lewis Tunstall, Leandro von Werra, and Thomas Wolf](https://www.oreilly.com/library/view/natural-language-processing/9781098136789/).  
 
 ## Notes 
 
