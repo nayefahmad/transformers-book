@@ -32,6 +32,7 @@ warnings.filterwarnings("ignore")
 
 # ## Top-level architecture
 
+
 class EncoderDecoder(nn.Module):
     """
     A standard Encoder-Decoder architecture. Base for this and many
@@ -47,7 +48,7 @@ class EncoderDecoder(nn.Module):
         self.generator = generator
 
     def forward(self, src, tgt, src_mask, tgt_mask):
-        "Take in and process masked src and target sequences."
+        """Take in and process masked src and target sequences."""
         return self.decode(self.encode(src, src_mask), src_mask, tgt, tgt_mask)
 
     def encode(self, src, src_mask):
@@ -69,6 +70,7 @@ class Generator(nn.Module):
 
 
 # ## Encoder and decoder stacks
+
 
 def clones(module, N):
     """Produce N identical layers."""
@@ -103,5 +105,3 @@ class LayerNorm(nn.Module):
         mean = x.mean(-1, keepdim=True)
         std = x.std(-1, keepdim=True)
         return self.a_2 * (x - mean) / (std + self.eps) + self.b_2
-
-
