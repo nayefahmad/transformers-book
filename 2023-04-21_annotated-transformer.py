@@ -1,5 +1,10 @@
 # # The Annotated Transformer
 
+# Params
+# - h:
+# - d_model:
+
+
 # References:
 # 1. [Notebook from Harvard NLP](http://nlp.seas.harvard.edu/annotated-transformer/#part-2-model-training)  # noqa
 
