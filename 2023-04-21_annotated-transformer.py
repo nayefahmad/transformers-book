@@ -2,6 +2,7 @@
 
 # Params
 # - h: int, 8. Number of attention heads
+# - N: int, 6. Number of identical encoder layers and decoder layers 
 # - d_model: int, 512. All sub-layers and embedding layers produce outputs of this size
 # - d_ff: int, 2048. Dimension of hidden layer in FFNNs
 # - d_k: int, 64. Dimension of output after projection of inputs of size d_model. This
