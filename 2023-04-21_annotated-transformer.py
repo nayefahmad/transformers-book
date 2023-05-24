@@ -1,8 +1,13 @@
 # # The Annotated Transformer
 
 # Params
-# - h:
-# - d_model:
+# - h: int, 8. Number of attention heads
+# - d_model: int, 512. All sub-layers and embedding layers produce outputs of this size
+# - d_ff: int, 2048. Dimension of hidden layer in FFNNs
+# - d_k: int, 64. Dimension of output after projection of inputs of size d_model. This
+#     is done before applying self-attention. This is relevant to the key vector.
+# - d_v: int, 64. Same as d_k, but relevant to the value vector.
+# - vocab: int 37,000, the number of tokens in the vocabulary
 
 
 # References:
@@ -129,7 +134,10 @@ class SublayerConnection(nn.Module):
 
 
 class EncoderLayer(nn.Module):
-    """Encoder is made up of self-attn and feed forward (defined below)"""
+    """
+    An encoder layer is made up of two sub-layers: multi-head self-attn and fully
+    connected feed forward (defined below)
+    """
 
     def __init__(self, size, self_attn, feed_forward, dropout):
         super(EncoderLayer, self).__init__()
@@ -159,7 +167,16 @@ class Decoder(nn.Module):
 
 
 class DecoderLayer(nn.Module):
-    """Decoder is made of self-attn, src-attn, and feed forward (defined below)"""
+    """
+    A decoder layer is made of three sub-layers: self-attn, src-attn, and feed forward
+    (defined below).
+
+    We also modify the self-attention sub-layer in the decoder stack to prevent
+    positions from attending to subsequent positions. This masking, combined with
+    fact that the output embeddings are offset by one position, ensures that the
+    predictions for position i can depend only on the known outputs at positions
+    less than i.
+    """
 
     def __init__(self, size, self_attn, src_attn, feed_forward, dropout):
         super(DecoderLayer, self).__init__()
