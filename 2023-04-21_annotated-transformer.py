@@ -2,11 +2,12 @@
 
 # Params
 # - h: int, 8. Number of attention heads
-# - N: int, 6. Number of identical encoder layers and decoder layers 
+# - N: int, 6. Number of identical encoder layers and decoder layers
 # - d_model: int, 512. All sub-layers and embedding layers produce outputs of this size
 # - d_ff: int, 2048. Dimension of hidden layer in FFNNs
 # - d_k: int, 64. Dimension of output after projection of inputs of size d_model. This
 #     is done before applying self-attention. This is relevant to the key vector.
+#     This is set as `d_model // h` in the `MultiHeadedAttention` class
 # - d_v: int, 64. Same as d_k, but relevant to the value vector.
 # - vocab: int 37,000, the number of tokens in the vocabulary
 
@@ -149,7 +150,7 @@ class EncoderLayer(nn.Module):
 
     def forward(self, x, mask):
         """Follow Figure 1 (left) for connections."""
-        x = self.sublayer[0](x, lambda x: self.self_attn(x, x, x, mask))
+        x = self.sublayer[0](x, lambda x: self.self_attn(x, x, x, mask))  # todo: where is the projection to d_k happening?
         return self.sublayer[1](x, self.feed_forward)
 
 
