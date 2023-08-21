@@ -1,5 +1,7 @@
 # # Domain-adaptation of a pretrained roberta model
 
+# Note that we do not train the tokenizer here - we just use the `roberta-base` default.
+
 # This example won't run without the dataset, but it shows how the process would work.
 
 run_example = False
@@ -16,10 +18,10 @@ if run_example:
     )
 
 
-    path = '/huggingface/models/RobertaLM'
+    path = './model/pretrained-roberta'
     model = RobertaForMaskedLM.from_pretrained(path)
 
-    path = '/huggingface/tokenizers/roberta-base'
+    path = './model/pretrained-roberta'
     tokenizer = RobertaTokenizer.from_pretrained(path)
 
 
