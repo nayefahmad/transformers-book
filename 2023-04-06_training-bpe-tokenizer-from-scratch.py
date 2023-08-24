@@ -1,5 +1,9 @@
 # # Training a BPE tokenizer from scratch
 
+# ## Notes:
+#
+# 1. BPE is different from WordPiece: see [hf tokenizers docs](https://huggingface.co/learn/nlp-course/chapter6/6?fw=pt)
+
 from pathlib import Path
 from tokenizers import Tokenizer, pre_tokenizers, models, trainers, decoders
 from tokenizers.processors import TemplateProcessing
